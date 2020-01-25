@@ -41,8 +41,8 @@
   <vcpu placement='static'>4</vcpu>
   <os>
     <type arch='x86_64' machine='q35'>hvm</type>
-    <loader readonly='yes' type='pflash'>/home/guest/KVM/macOS/OVMF/OVMF_CODE.fd</loader>
-    <nvram>/home/guest/KVM/macOS/OVMF/OVMF_VARS-1024x768.fd</nvram>
+    <loader readonly='yes' type='pflash'>/vm/macOS/OVMF/OVMF_CODE.fd</loader>
+    <nvram>/vm/macOS/OVMF/OVMF_VARS-1024x768.fd</nvram>
   </os>
   <features>
     <acpi/>
@@ -85,21 +85,21 @@
     <emulator>/run/current-system/sw/bin/qemu-system-x86_64</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2' cache='writeback'/>
-      <source file='/home/guest/KVM/macOS/Clover/CloverNG.qcow2'/>
+      <source file='/vm/macOS/Clover/CloverNG.qcow2'/>
       <target dev='sda' bus='sata'/>
       <boot order='1'/>
       <address type='drive' controller='0' bus='0' target='0' unit='0'/>
     </disk>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2' cache='writeback'/>
-      <source file='/home/guest/KVM/macOS/mac_hdd_ng.img'/>
+      <source file='/vm/macOS/mac_hdd_ng.img'/>
       <target dev='sdb' bus='sata'/>
       <boot order='2'/>
       <address type='drive' controller='0' bus='0' target='0' unit='1'/>
     </disk>
     <disk type='file' device='disk'>
       <driver name='qemu' type='raw' cache='writeback'/>
-      <source file='/home/guest/KVM/macOS/BaseSystem.img'/>
+      <source file='/vm/macOS/BaseSystem.img'/>
       <target dev='sdc' bus='sata'/>
       <boot order='3'/>
       <address type='drive' controller='0' bus='0' target='0' unit='2'/>
