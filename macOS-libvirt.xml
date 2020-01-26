@@ -173,6 +173,8 @@
     <qemu:arg value='-smbios'/>
     <qemu:arg value='type=2'/>
     <qemu:arg value='-cpu'/>
+    <!-- Following options is tested with macOS 10.13.6 and macOS 10.14.4. -->
+    <!-- Tweak it in case you are having booting problems. -->
     <qemu:arg value='Penryn,kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on,+pcid,+ssse3,+sse4.2,+popcnt,+avx,+aes,+xsave,+xsaveopt,check'/>
   </qemu:commandline>
 </domain>
