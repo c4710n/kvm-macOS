@@ -2,15 +2,25 @@
 <!--
   macOS libvirt XML configuration.
 
-    # edit macOS-libvirt-NG.xml
+    # Prepare
+    echo 1 > /sys/module/kvm/parameters/ignore_msrs
+
+    # Create img
+    qemu-img create -f qcow2 storage-macOS 50G
+
+    # edit macOS-libvirt.xml
 
     # validate this file
-    virt-xml-validate macOS-libvirt-NG.xml
+    virt-xml-validate macOS-libvirt.xml
 
-    # create a VM
-    virsh \-\-connect qemu:///system define macOS-libvirt-NG.xml
+    # define a VM
+    virsh -c qemu:///system define macOS-libvirt.xml
 
-    virt-manager \-\-connect qemu:///system
+    # start VM manager
+    virt-manager -c qemu:///system
+
+    # after change, refine the same VM
+    virsh -c qemu:///system define macOS-libvirt.xml
 
   Options:
   Adjust memory and currentMemory to 3145728 if you want only 3 GiB.
@@ -33,9 +43,9 @@
   give the clock a tsc timer for kvm to pass to the guest.
   See comments on the <kvm> and <clock> attributes.
 -->
-  <name>macOS</name>
+  <name>macOS 10.13.6</name>
   <uuid>2aca0dd6-cec9-4717-9ab2-0b7b13d111c3</uuid>
-  <title>macOS</title>
+  <title>macOS 10.13.6</title>
   <memory unit='KiB'>4194304</memory>
   <currentMemory unit='KiB'>4194304</currentMemory>
   <vcpu placement='static'>4</vcpu>

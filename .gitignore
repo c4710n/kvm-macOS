@@ -3,4 +3,4 @@
 *.smd
 *.dmg
 *.tar.lzma
-mac_hdd.img
+*.qcow2
