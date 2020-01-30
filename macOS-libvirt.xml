@@ -6,7 +6,7 @@
     echo 1 > /sys/module/kvm/parameters/ignore_msrs
 
     # Create img
-    qemu-img create -f qcow2 storage-macOS 50G
+    qemu-img create -f qcow2 storage-macOS.qcow2 50G
 
     # edit macOS-libvirt.xml
 
@@ -107,9 +107,17 @@
       <boot order='2'/>
       <address type='drive' controller='0' bus='0' target='0' unit='1'/>
     </disk>
+    <!-- uncomment this when installing new OS -->
+    <!-- <disk type='file' device='disk'> -->
+    <!--   <driver name='qemu' type='raw' cache='writeback'/> -->
+    <!--   <source file='/vm/macOS/BaseSystem.img'/> -->
+    <!--   <target dev='sdc' bus='sata'/> -->
+    <!--   <boot order='3'/> -->
+    <!--   <address type='drive' controller='0' bus='0' target='0' unit='2'/> -->
+    <!-- </disk> -->
     <disk type='file' device='disk'>
-      <driver name='qemu' type='raw' cache='writeback'/>
-      <source file='/vm/macOS/BaseSystem.img'/>
+      <driver name='qemu' type='qcow2' cache='writeback'/>
+      <source file='/vm/macOS/storage-external.qcow2'/>
       <target dev='sdc' bus='sata'/>
       <boot order='3'/>
       <address type='drive' controller='0' bus='0' target='0' unit='2'/>
