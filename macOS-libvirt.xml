@@ -56,37 +56,10 @@
   </os>
   <features>
     <acpi/>
-<!-- Note: On Fedora 27 w/ an i7-5820K CPU and repository QEMU version as of 27-Jan-2018, the guest experienced severe clock issues. If you encounter these issues, try changing this to <hidden state ='off'/> -->
     <kvm>
       <hidden state='on'/>
     </kvm>
   </features>
-  <!--
-  <cpu mode='custom' match='exact' check='full'>
-    <model fallback='forbid'>Penryn</model>
-    <vendor>GenuineIntel</vendor>
-    <feature policy='require' name='vme'/>
-    <feature policy='require' name='x2apic'/>
-    <feature policy='require' name='hypervisor'/>
-    <feature policy='require' name='invtsc'/>
-    <feature policy='require' name='aes'/>
-    <feature policy='require' name='xsave'/>
-    <feature policy='require' name='avx'/>
-    <feature policy='require' name='xsaveopt'/>
-    <feature policy='require' name='avx2'/>
-    <feature policy='require' name='smep'/>
-    <feature policy='require' name='vmware-cpuid-freq'/>
-  </cpu>
-  -->
-<!-- Note: To resolve clock issues experienced on Fedora 27 as described at top of file,
-     we need to add a timer. Replace the clock offset line with,
-
-     <clock offset='utc'>
-       <timer name='tsc'/>
-     </clock>
-
-     Please remember to also change the kvm hidden state as well, as described above.
--->
   <clock offset='utc'/>
   <on_poweroff>destroy</on_poweroff>
   <on_reboot>restart</on_reboot>
@@ -175,8 +148,6 @@
     </hub>
     <memballoon model='none'/>
   </devices>
-  <!-- Note: Enable the next line when SELinux is enabled -->
-  <!-- seclabel type='dynamic' model='selinux' relabel='yes'/> -->
   <qemu:commandline>
     <qemu:arg value='-device'/>
     <qemu:arg value='isa-applesmc,osk=ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc'/>
