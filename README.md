@@ -89,6 +89,13 @@ OVMF resolution is changed by following steps:
 3. Commit changes and exit the OVMF menu.
 4. Relaunch the KVM virtual machine.
 
+## Change MAC address
+
+```sh
+# generates QEMU compatible mac addresses
+$ printf '52:54:00:AB:%02X:%02X\n' $((RANDOM%256)) $((RANDOM%256))
+```
+
 ## Update existing VM
 
 Stop the VM, edit the XML file, then redefine the VM.
