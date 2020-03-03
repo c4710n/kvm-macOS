@@ -1,10 +1,59 @@
-# Install macOS with KVM
+# kvm-macOS
+
+> Forked from [OSX-KVM](https://github.com/kholia/OSX-KVM).
+
+macOS for Linux users.
+
+## Quickstart
+
+### Install QEMU
+
+Install QEMU with your prefered way.
+
+### Configure KVM
+
+```sh
+$ echo 1 > /sys/module/kvm/parameters/ignore_msrs
+```
+
+### Prepare `BaseSystem.img`
+
+### Create a virtual HDD image for installing macOS
+
+```sh
+$ qemu-img create -f qcow2 storage-macOS.qcow2 50G
+```
+
+### Create a virtual HDD image for storage external data
+
+```sh
+$ qemu-img create -f qcow2 storage-external.qcow2 100G
+```
+
+### Edit and validate `macOS-libvirt.xml`
+
+```sh
+$ $EDITOR macOS-libvirt.xml
+$ virt-xml-validate macOS-libvirt.xml
+```
+
+### Define a VM
+
+```sh
+$ virsh -c qemu:///system define macOS-libvirt.xml
+```
+
+### Start virt-manager
+
+```sh
+$ virt-manager -c qemu:///system
+```
 
 ## Change Screen Resolution
 
 ### determine your desired resolution
 
-The default resolution is 1024x768 which is widely supported. Suppose that your desired resolution is 1920x1080.
+The default resolution is 1440x900 which is widely supported. Suppose that your desired resolution is 1920x1080.
 
 ### change Clover resolution
 
@@ -39,3 +88,17 @@ OVMF resolution is changed by following steps:
 2. Set `Device Manager > OVMF Platform Configuration > Change Preferred Resolution` to desired resolution.
 3. Commit changes and exit the OVMF menu.
 4. Relaunch the KVM virtual machine.
+
+## Update existing VM
+
+Stop the VM, edit the XML file, then redefine the VM.
+
+```sh
+$ $EDITOR macOS-libvirt.xml
+$ virt-xml-validate macOS-libvirt.xml
+$ virsh -c qemu:///system define macOS-libvirt.xml
+```
+
+## License
+
+MIT
