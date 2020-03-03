@@ -16,7 +16,24 @@ Install QEMU with your prefered way.
 $ echo 1 > /sys/module/kvm/parameters/ignore_msrs
 ```
 
-### Prepare `BaseSystem.img`
+### Prepare macOS installer
+
+Fetch macOS installer:
+
+```sh
+$ cd Installer
+$ ./fetch-macOS.py
+```
+
+> Modern NVIDIA GPUs are supported on HighSierra but not on Mojave (yet).
+
+After executing this step, `BaseSystem.dmg` is downloaded into current folder.
+
+Next, convert this file into a usable format:
+
+```sh
+$ qemu-img convert BaseSystem.dmg -O raw BaseSystem.img
+```
 
 ### Create a virtual HDD image for installing macOS
 

@@ -42,16 +42,6 @@
       <boot order='2'/>
       <address type='drive' controller='0' bus='0' target='0' unit='1'/>
     </disk>
-    <!-- uncomment this when installing new OS -->
-    <!--
-    <disk type='file' device='disk'>
-      <driver name='qemu' type='raw' cache='writeback'/>
-      <source file='/vm/macOS/BaseSystem.img'/>
-      <target dev='sdc' bus='sata'/>
-      <boot order='3'/>
-      <address type='drive' controller='0' bus='0' target='0' unit='2'/>
-    </disk>
-    -->
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2' cache='writeback'/>
       <source file='/vm/macOS/storage-external.qcow2'/>
@@ -59,6 +49,16 @@
       <boot order='3'/>
       <address type='drive' controller='0' bus='0' target='0' unit='2'/>
     </disk>
+    <!-- uncomment this when installing new OS -->
+    <!--
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='raw' cache='writeback'/>
+      <source file='/vm/macOS/Installer/BaseSystem.img'/>
+      <target dev='sdd' bus='sata'/>
+      <boot order='4'/>
+      <address type='drive' controller='0' bus='0' target='0' unit='3'/>
+    </disk>
+    -->
     <controller type='sata' index='0'>
       <address type='pci' domain='0x0000' bus='0x00' slot='0x1f' function='0x2'/>
     </controller>
