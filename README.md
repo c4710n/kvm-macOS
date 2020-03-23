@@ -49,6 +49,8 @@ $ qemu-img create -f qcow2 storage-external.qcow2 100G
 
 ### Edit and validate `macOS-libvirt.xml`
 
+> `macOS-libvirt.xml` supposes that the root dir of macOS VM is `/vm/macOS`.
+
 ```sh
 $ $EDITOR macOS-libvirt.xml
 $ virt-xml-validate macOS-libvirt.xml
