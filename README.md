@@ -27,7 +27,8 @@ $ ./fetch-macOS.py
 
 > Modern NVIDIA GPUs are supported on HighSierra but not on Mojave (yet).
 
-After executing this step, `BaseSystem.dmg` is downloaded into current folder.
+After executing this step, `BaseSystem.dmg` is downloaded into current folder. Check the hash of image by using [notpeter
+/ apple-installer-checksums](https://github.com/notpeter/apple-installer-checksums).
 
 Next, convert this file into a usable format:
 
