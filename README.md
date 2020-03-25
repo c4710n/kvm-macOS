@@ -126,6 +126,10 @@ $ virt-xml-validate macOS-libvirt.xml
 $ virsh -c qemu:///system define macOS-libvirt.xml
 ```
 
+## More resources
+
+- [macOS Security and Privacy Guide](https://github.com/drduh/macOS-Security-and-Privacy-Guide)
+
 ## License
 
 MIT
